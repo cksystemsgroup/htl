@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>HTL and Reliability</title>
+	<LINK href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><a href="./index.html" class="menu_item_div"><div class="menu_item">Home</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./HTLCompiler.html" class="menu_item_div"><div class="menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./emachine.html" class="menu_item_div"><div class="menu_item">E Machine</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./exotask-htl/index.html" class="menu_item_div"><div class="menu_item"> HTL Exotask</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><div class="inactive_menu_item">HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./examples.html" class="menu_item_div"><div class="menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<br>
+			<div><b>Abstract</b></div>
+			<p class="abstract">
+			We propose an abstract notion of logical reliability for real-time
+			program tasks that interact through periodically
+			updated program variables. Logical reliability is a requirement on
+			possibly distributed implementations to provide, in the long run,
+			reliable updates of program variables. We describe a reliability
+			analysis approach that checks if the given short-term (e.g., single-period)
+			reliability of a program variable update in an implementation is
+			sufficient to meet the logical reliability requirement (of the
+			program variable) in the long run.  We then present a notion of design by refinement where a task can be refined
+			by another task that writes to program variables with less logical
+			reliability. The notion of refinement preserves the reliability analysis i.e.~if
+			an implementation is reliable for the refined task, then the implementation
+			is reliable for the refining task.
+			The resulting analysis can be readily combined with an
+			incremental schedulability analysis for interacting real-time tasks
+			that was proposed earlier for Hierarchical Timing Language (HTL), a
+			hierarchical coordination language for distributed real-time
+			systems. We have implemented a logical-reliability-enhanced
+			prototype of the compiler and runtime infrastructure for HTL, and
+			tested the system on a real (i.e., not simulated) control
+			application.
+			</p>
+			<br>
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

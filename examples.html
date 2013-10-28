@@ -1,0 +1,207 @@
+<html>
+
+<head>
+	<title>HTL Examples</title>
+	<LINK href="./style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><a href="./index.html" class="menu_item_div"><div class="menu_item"> Home</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./HTLCompiler.html" class="menu_item_div"><div class="menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./emachine.html" class="menu_item_div"><div class="menu_item">E Machine</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./exotask-htl/index.html" class="menu_item_div"><div class="menu_item"> HTL Exotask</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./reliability.html" class="menu_item_div"><div class="menu_item"> HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><div class="inactive_menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<br>
+			<h3>Abstract</h3>
+			<i>
+			In order to test the HTL compiler and the E Machine we provide some examples.
+			</i>
+			
+			<hr>
+			<h3> Hierarchical HTL Compiler examples. </h3>
+			
+			<p class="text">The case study implements a distributed real-time controller for
+			a three-tank system (3TS in short), this is a real application. The system (Figure 1) consists
+			of three tanks T1, T2 and T3 each with an evacuation tap tap1,
+			tap2 and tap3 respectively. The tanks are interconnected via
+			taps tap13 and tap23. Two pumps, P1 and P2, feed water in
+			the tanks T1 and T2 respectively. The goal of the controller is to
+			maintain the level of water in tanks T1 and T2. The controller is
+			designed to work under the presence and absence of perturbations
+			(simulated by the evacuation taps). If there are no perturbation a
+			P (proportional) controller is used to control the fluid level. Under
+			perturbations, a PI (Proportional Integral) controller is used. The modeling
+			generates four possible scenarios: (1) both pumps controlled
+			by P controllers, (2) P1 and P2 controlled by P and PI controllers
+			respectively, (3) P1 and P2 controlled by PI and P controllers respectively,
+			and (4) both pumps controlled by PI controllers.
+			</p>
+			<center>
+			<img src="./files/3TS.png"></img>
+			<br>
+			Figure 1. Overview of three tanks system
+			</center>
+			<p class="text">The controller is implemented in a distributed fashion on three
+			E machines (Figure 2). Each E Machine is implemented in C on
+			an Unix machine with an Intel Core 2 processor (2.4 GHz, 2 GB
+			RAM) running Fedora Core 6 operating system. The three E machines
+			implement the controller for P1, the controller for P2, and
+			the interface controller. The tasks are implemented in C. We have
+			used the scheduler in the Unix machines for scheduling the released
+			tasks. The E Machines communicate with each other through UDP.
+			Communication with the 3TS plant is done via a Windows 98 machine
+			with a DAC 98 card. A TCP server has been implemented on
+			theWindows 98 machine. A client can send two types of messages
+			to the server: either it can request the server to read the heights
+			of water in the two tanks and send it back, or it can request the
+			server to set the fill debit for each of the pumps. The Windows
+			</p>
+			<center>
+			<img src="./files/implementation-2.png"></img>
+			<br>
+			Figure 2. Overview of implementation
+			</center>
+			98 machine has an AMD K6 processor (133MHz, 192MB RAM).
+			Figure 3 shows the three tank system under action.</p>
+			<center>
+			<img src="./files/3TS.jpg"></img> 
+			<br>
+			Figure 3. Three tank system under runs
+			</center>
+			<hr>
+			<div><b>Video Demo</b></div>
+			<p>Download video demo of the 3TS plant controled using an HTL controller: <a href="./files/3TS-htl.wmv">Full Video (WMV, 10 min.)</a>&nbsp; or &nbsp;<a href="./files/3TS-short.wmv">Short Video (WMV, 4 min.)</a></p>
+			
+			<hr>
+			<h3> Flat HTL Compiler examples. </h3>
+			<h3>Downloads</h3>
+			Examples: <a href="./files/examples.tar.gz">examples.tar.gz</a>.
+			<br>
+			Three Tanks System (3TS) Simulator: <a href="./files/3ts.tar.gz">3ts.tar.gz</a>.
+			<hr>
+			<h3>Steer By Wire</h3>
+			This sample program can be found in “steer_by_wire.htl” file. The program is a relatively 
+			complex one, there are many modules and modes, and refining programs. This is a very 
+			good example for what can be done with HTL. The program is to be run on 8 different hosts.
+			<br><br>
+			The basic concept of any steer-by-wire architecture is the removal of the mechanical linkage 
+			between the steering wheel and the wheel. The mechanical linkage is replaced by a set of 
+			steering wheel angle sensors, an electric motor that controls the wheel angle, road wheel angle 
+			sensors and some electronics that compute the closed loop control system. To maintain a 
+			realistic road condition feel for the driver, there is also a force feedback actuator on the 
+			steering wheel.
+			<h5>How To Run Steer By Wire Example?</h5>
+			First of all each module has to be mapped to run on a particular host, by default the mapping is 
+			for the local host (don't forget to modify the makefile to point to steer-by-wire.htl file). Next for 
+			each host which is defined in the HTL program, it has to be performed a new compilation of the 
+			HTL program and the E Machine. After E Machine was compiled for a host, the resulting binary 
+			file (e-machine), has to be saved, since a new compilation will override the previous file.
+			<br></br>
+			In the end each E Machine has to be run on the particular host, for which it was compiled. The 
+			E Machines will synchronize themselves and only after each E Machine was started, the generated 
+			E code will be interpreted.
+			
+			<hr>
+			
+			<h3>Three Tanks System (3TS)</h3>
+			This sample program can be found in “3TS.htl” file. The program implements the timing for a 
+			control application. The 3TS plant consists of 3 water tanks interconnected, also each tank has an 
+			evacuation tap, which can be used to simulate perturbation, two of the tanks have a pump which can 
+			pump water into corresponding tank. 3TS plant is a very nonlinear one, and it is impossible to control 
+			it using one controller for each pump. The solution implemented here uses three different controllers 
+			for each pump: 
+			<ul>
+				<li>P controller for the case when there is no perturbation (no water leaves the tank), in this 
+				conditions, the tank is like a perfect integrator and it can not be used a PI controller;
+				
+				<li>PI  controller, used when there is some perturbation (water drains out of the tank), in this 
+				condition, the tank can be approximated, as a PT1 plant, in order to avoid big over control 
+				values there are used two different PI controllers: 
+				<ul>
+					<li>when the control error is big, there will be used a PI controller with fast integration 
+					speed;
+					
+					<li>when the control error is small, this means we are close to the desire water level, 
+					a PI controller with slow integration speed is used.
+				</ul>
+			</ul>
+			
+			The HTL program used to describe the timing for this control application consists of a root program, 
+			which has to modules, one for each pump, that is to be controlled. Each module consists of 2 modes, 
+			they can switch from one to the other. One mode implements the P controller, while the other mode 
+			implements the PI controller. The mode that implements the PI controller is farther refine, and the 
+			refining program consists of one module witch contains 2 modes one for each type of PI controller, 
+			again each mode can switch to the other.
+			
+			<h5>How To Run 3TS Example?</h5>
+			
+			Download the 3TS simulator suite  (<a href="./files/3ts.tar.gz">3ts.tar.gz</a>).
+			<br><br>
+			3TS simulator suite consists of two Java programs: (1) a program that simulates the 3TS plant, and 
+			(2) a program that can be used to view the signals in the 3TS plant simulator and also to send 
+			commands to it.
+			<ol>
+				<li>The 3TS simulator – is contained in file: sim3TS.jar. This acts like a TCP server, it listens 
+				for clients to connect, there can be more the one client connected, but only one can send 
+				commands to the 3TS simulator plant, all other can only receive data from the plant simulator.
+				To run it type: <b>java -jar sim3TS.jar</b>;
+				
+				<li>The 3TS controller – is contained in the file: rg3TS.jar. This is a client for the 3TS simulator 
+				and can be used to control the plant simulator or just view the signals in the simulator.
+				To run it type: <b>java -jar rg3TS.jar</b>.
+			</ol>
+			
+			To run the htl program that can control the simulator, you have to modify the makefile to point to “3TS.htl” 
+			and then type "<b>make run THREE_TANKS_SYSTEM=1</b>". Before you run the E Machine you have 
+			to start the 3TS simulator.
+			
+			<hr>
+			
+			<h3>Schedulability Test Examples</h3>
+			There are two such programs: sched-1.htl and sched-2.htl. One can play with 
+			this two programs in order to test the schedulability test algorithm or other features. 
+			This programs have only a didactic purpose, they don't implement the timing of a real
+			application as the previous two programs do. 
+			<h5>How To Run Schedulability Test Examples?</h5>
+			This should not be run on the E Machine, they are just to test the schedulability 
+			algorithem.
+			<br>
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

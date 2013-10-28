@@ -1,0 +1,161 @@
+<html>
+<head>
+	<title>E Machine</title>
+	<LINK href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><a href="./index.html" class="menu_item_div"><div class="menu_item">Home</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./HTLCompiler.html" class="menu_item_div"><div class="menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><div class="inactive_menu_item">E Machine</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./exotask-htl/index.html" class="menu_item_div"><div class="menu_item"> HTL Exotask</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./reliability.html" class="menu_item_div"><div class="menu_item"> HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./examples.html" class="menu_item_div"><div class="menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<br>
+			<h3>Abstract</h3>
+			<p>
+			The E(mbedded ) Machine, is a virtual machine that interprets the 
+			E code. Initialy the E Code consisted of 6 instructions:
+			<ul>
+				<li><b>call</b> – executes a driver, a driver is a piece of code 
+				written in a conventional language (in this case C);
+				
+				<li><b>release</b> – releases a task, the task function is also written 
+				in a conventional language ( C );
+				
+				<li><b>future</b> – mark a piece of E code to be executed at some 
+				future time;
+				
+				<li><b>jump</b> – unconditioned jump to a specified address;
+				
+				<li><b>if</b> – conditioned jump to a specified address;
+				
+				<li><b>return</b> – stops the E Machine from executing E code until
+				an event occuers;
+			</ul>
+			<br>
+			Recently we have extended the E Code in order to support hierarchical 
+			execution, the new code is called Hierarchical E Code (HE Code). 
+			HE Code consists of the following instructions:			
+			<ul>
+				<li><b>call</b> – executes a driver, a driver is a piece of code 
+				written in a conventional language (in this case C);
+				
+				<li><b>release</b> – releases a task, the task function is also written 
+				in a conventional language ( C );
+			
+				<li><b>wfuture</b> – mark a piece of E code to be executed at some 
+				future time, the <i>WriteQueue</i> is used to store the trigger;
+			
+				<li><b>sfuture</b> – mark a piece of E code to be executed at some 
+				future time, the <i>SwitchQueue</i> is used to store the trigger;
+				
+				<li><b>rfuture</b> – mark a piece of E code to be executed at some 
+				future time, the <i>ReadQueue</i> is used to store the trigger;
+			
+				<li><b>jumpConditional</b> – conditioned jump to a specified address;
+			
+				<li><b>jumpAbsolute</b> – absolute jump to a specified address;
+				
+				<li><b>jumpSubroutine</b> – subroutine jump to a specified address;
+				
+				<li><b>copyRegister</b> – copy the contents of a register Rx into another 
+				register Ry;
+				
+				<li><b>pushRegister</b> – push the contents of a register Rx onto a stack;
+				
+				<li><b>popRegister</b> – pop content from a stack to a register Rx;
+				<li><b>getParent</b> – get the parent trigger of the trigger stored in a register 
+				Rx and store it into another register Ry;
+				
+				<li><b>setParent</b> – set the parent trigger of the trigger stored in a register 
+				Rx to the trigger stored in register Ry;
+				
+				<li><b>copyChildren</b> – copy the children list of the trigger in a register Rx into 
+				the children list of the trigger in register Ry;
+				
+				<li><b>setParentOfChildren</b> – set the parent of all the children of the trigger 
+				in a register Rx to the trigger stored in a register Ry;
+				
+				<li><b>deleteChildren</b> – remove all child triggers of the trigger in Rx recursively;
+				
+				<li><b>replaceChild</b> – in the children list of the trigger stored in register Rx, 
+				replace trigger stored in Ry with trigger stored in Rz;
+				
+				<li><b>cleanChildrenList</b> – empty the children list of trigger stored in a 
+				register Rx;
+				
+				<li><b>return</b> – returns from subroutine or stops the E Machine from 
+				executing E code until an event occuers;
+			</ul>
+
+			</p>
+			<hr>
+			<h3>Downloads</h3>
+			E Machine source files (Linux, Mac OS): <a href="./files/Flat_EMachine.tar.gz">Flat_EMachine.tar.gz</a>
+			<br>
+			Hierarchical E Machine source files (Linux, Mac OS): <a href="./files/Hierarchical_EMachine.tar.gz">Hierarchical_EMachine.tar.gz</a>
+			<hr>
+			<h3>How To Run It?</h3>
+			First you have to download the E Machine or the Hierarchical E Machine.
+			sources</a>.
+			<br>
+			<br>
+			To build the E Machine:
+			<ul>
+				<li>edit the “<b>makefile</b>” to change the “EXAMPLE” definition to point to the 
+				file you want to compile;
+				
+				<li> type “<b>make all</b>” to compile the htl example program and build the E 
+				Machine;
+				
+				<li>type “<b>make all host=[host_name]</b>” to build the E Machine for specified 
+				host.
+			</ul>
+		
+			To run the E Machine:
+			<ul>
+				<li>type “<b>./e-machine</b>” to run the E Machine for non-distributed programs;
+				
+				<li>type “<b>./e-machine [ID]</b>” to run the E Machine for the host with the 
+				specified ID, the ID corresponds to the order in which the hosts appear in the HTL file, 
+				starting from 0.
+			</ul>
+			<br>
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

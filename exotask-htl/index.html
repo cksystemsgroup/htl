@@ -1,0 +1,143 @@
+<html>
+<head>
+	<title>HTL Home Page</title>
+	<LINK href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><a href="../index.html" class="menu_item_div"><div class="menu_item"> Home</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../HTLCompiler.html" class="menu_item_div"><div class="menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../emachine.html" class="menu_item_div"><div class="menu_item">E Machine</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><div class="inactive_menu_item"> HTL Exotask</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../reliability.html" class="menu_item_div"><div class="menu_item"> HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../examples.html" class="menu_item_div"><div class="menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="../team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<h3>Abstract</h3>
+			<p class="abstract">
+			The main goal of the project is to implement full semantics of the 
+			<a href="http://htl.cs.uni-salzburg.at">Hierarchical Timing Language</a> using 
+			<a href="http://www.alphaworks.ibm.com/tech/xrtgs">Exotask</a> framework. 
+			The Exotask HTL framework consists of two parts: (1) the Eclipse plug-in 
+			which can be used during development of a real-time application, and (2) 
+			the runtime which contains all classes needed to run an Exotask HTL 
+			real-time application.
+			</p>
+			<hr>
+			<h3>License</h3>
+			
+			All the source code on this page is under: <a href="./files/license.txt"><i>The MIT License</i></a>
+			<hr>
+			
+			<h3>Download and Installation</h3>
+			
+			You can download source code <a href="./files/exotaskHTLsrc.zip">here</a>.<br>
+			You can download Exotask HTL <b>plug-in</b> binary distribution <a href="./files/at.uni_salzburg.cs.exotasks.editor.timing.htl_1.1.0.zip">here</a>.<br>
+			You can download Exotask HTL <b>runtime</b> binary distribution <a href="./files/exotaskHTL-runtime.jar">here</a>.<br>
+			<br>
+			Before you install Exotask HTL project you have to make sure that you have
+			already installed the Exotask framework (for details on how to install Exotask
+			framework click <a href="http://www.alphaworks.ibm.com/tech/xrtgs">here</a>). 
+			After you have successfully installed Exotask frame you just have to unzip the plug-in 
+			binary distribution of the Exotask HTL Editor into Eclipse "plugins" directory.
+			<hr>
+			
+			<h3>Short description on how the graphical editor works.</h3>
+			<p class="text">
+			After the Exotask HTL plug-in was installed a new timing grammar is added to the Exotask editor 
+			palette, the new timing is called HTL Timing. An HTL Timing grammar has the following properties: 
+			<ul>
+			 <li>Program List – specifies the list of program in the HTL program</li>
+			 <li>Module List – specifies the list of modules in the HTL program, each module has to belong to 
+			     one and only one program</li>
+			 <li>Mode List – specifies the list of modes in the HTL program, each mode belongs to one and only 
+			     one module and can be refined by a program</li>
+			</ul>
+			Defining the HTL program structure (e.g., define programs, modules and modes) has to be done prior 
+			to added any other element to the graph. All the elements that can be added to an exotask graph have 
+			to types of properties: (a) properties common to all grammars, and (b) properties specific to each 
+			grammar, here I will discuss only those properties that are specific to HTL Timing grammar. 
+			</p>
+			<p class="text">
+			<b><i>Communicator</i></b> - a communicator has a period (the period specifies how often communicator can be 
+			accessed, e.g. read or written), and belongs to one and only one program.
+			</p>
+			<p class="text">
+			<b><i>Exotask</i></b> - an exotask can be abstract or not, can have a parent task, and has to 
+			specify a list of modes in which the task can be invoked. An abstract exotask is just a place 
+			holder for a task that is invoked in one of the modes in the refining programs; it will not be 
+			invoked at runtime. Any task invoked in a refining program has to specify a parent task. 
+			Two tasks can not be invoked in two different modes that can be run in parallel.
+			</p>
+			<p class="text">
+			<b><i>Predicate</i></b> - has to specify a list of modes in which it will be invoked, and one 
+			destination mode. Two predicates can not be invoked in two different modes that can be run in parallel
+			</p>
+			<p class="text">
+			<b><i>Connection</i></b> - has to specify the list of modes in which the connection is invoked, 
+			if the connection reads or writes a communicator then it has to specify an instance greater then -1, 
+			otherwise the instance has to be equal to -1 (the instance represents the instance of the communicator 
+			being accessed relative to the period of the mode in which the connection is invoked), if a connection 
+			writes to a communicator then the “Write Communicator” property has to be set to true. Two connections 
+			can not be invoked in two different modes that can be run in parallel.
+			</p>
+			<hr>
+			<h3>Case study</h3>
+			<p class="text">
+			The case study consists of a simple program that adds a value to a counter until a threshold (we call 
+			this addition threshold) is reach, after the addition threshold was reached the value is subtracted 
+			until the subtraction threshold is reached, when we switch back to addition. The value of the addition 
+			step gets higher as the value of the counter gets closer to the addition threshold. The value of the 
+			subtraction step gets lower as the value of the counter gets closer to the subtraction threshold. In 
+			parallel with the addition or subtraction operations another counter is multiplied or divided with a 
+			certain factor, again the factor that the counter is multiplied (divided) increases (decreases) as the 
+			counter value gets closer to the multiplication (division) threshold.
+			</p>
+			<p class="text">
+			The HTL Exotask program consists of a root program with three modules: one module for the addition and 
+			subtraction, one module for multiplication and division, and another module that writes the values of 
+			the counters. The root program also contains two communicators one for each of the two counters. The 
+			addition and subtraction module contains one mode that is refined by a program which contains one module 
+			with two modes (one for addition and the other one for subtraction), the two modes can switch from one 
+			another, the two modes are farther refined by two programs each of them contains one module and three 
+			modes, so that we have there different addition (subtraction) steps. The structure of the multiplication 
+			(division) module is similar to that of the addition (subtraction) module that was previously presented. 
+			</p>
+			<br>
+			<br>
+			You can download case study source code <a href="./files/case-study-src.zip">here</a>.
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+.title
+{
+	font-weight: bold;
+	font-size: 24pt;
+	background-color: #9999bb;
+	font-variant: small-caps;
+}
+.menu_item
+{
+	width: 200px;
+	color: black;
+	background-color: #9999bb;
+	text-decoration: none;
+}
+
+.menu_item:hover
+{
+	width: 200px;
+	color: black;
+	background-color: #c8c8e6;
+	text-decoration: none;
+}
+
+.inactive_menu_item
+{
+	font-weight: bold;
+	width: 200px;
+	color: dimgray;
+	background-color: #c8c8e6;
+	text-decoration: none;
+}
+
+.menu_border
+{
+	border-right: black 1px solid;
+	border-bottom: black 1px solid;
+}
+
+.page_border
+{
+	border-right: black 1px solid;
+	border-top: black 1px solid;
+	border-left: black 1px solid;
+	border-bottom: black 1px solid;
+}
+
+.abstract
+{
+	text-indent: 30px;
+	font-style: italic;
+	text-align: justify;
+}
+
+.text
+{
+	text-indent: 30px;
+	text-align: justify;
+}

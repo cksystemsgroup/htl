@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>HTL Home Page</title>
+	<LINK href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><div class="inactive_menu_item"> Home</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./HTLCompiler.html" class="menu_item_div"><div class="menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./emachine.html" class="menu_item_div"><div class="menu_item">E Machine</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./exotask-htl/index.html" class="menu_item_div"><div class="menu_item"> HTL Exotask</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./reliability.html" class="menu_item_div"><div class="menu_item"> HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./examples.html" class="menu_item_div"><div class="menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<br>
+			<h3>Abstract</h3>
+			<p class="abstract">
+			Hierarchical Timing Language (HTL) is a hierarchical coordination 
+			language for distributed, hard real-time applications. HTL
+			programs determine portable and predictable real-time behavior of
+			periodic software tasks running on a possibly distributed system
+			of host computers. An HTL program specifies task-to-host mappings,
+			task frequencies, mode switching, and I/O times and dependencies 
+			but not task implementations, which are assumed to be
+			done in some general purpose language such as C or Java. A task
+			in HTL is essentially sequential code that reads input, computes,
+			and writes output. HTL offers two fully hierarchical programming
+			constructs: (sequential, conditional, parallel) composition of tasks
+			as well as refinement of abstract into concrete tasks. An abstract
+			task has a frequency, specific I/O times and dependencies, and a
+			worst-case execution time (WCET) but no implementation. An abstract
+			task is a temporally conservative placeholder for a concrete
+			task with an implementation. A concrete task refines an abstract
+			task if the concrete task has the same frequency but more time to
+			compute, i.e., relaxed I/O times and dependencies, and less WCET
+			than the abstract task. The result is that a concrete HTL program is
+			time-safe (schedulable) if it refines a time-safe abstract HTL program.
+			In general, checking refinement in HTL is exponentially
+			faster than checking time safety (schedulability). However, abstract
+			HTL programs are temporally conservative approximations of concrete
+			HTL programs, i.e., there are abstract HTL programs that are
+			not time-safe but for which time-safe refinements exist
+			</p>
+			<center>
+				<a href="./examples.html"><img src="./files/3TS.jpg"></img></a>
+			</center>
+			<br>
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

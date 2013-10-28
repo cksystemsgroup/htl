@@ -1,0 +1,167 @@
+<html>
+<head>
+	<title>HTL Compiler</title>
+	<LINK href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#eeeeff">
+
+<table width="100%" class="title">
+<tr>
+	<td align="center"><b><font color="blue">H</font></b>ierarchical <b><font color="blue">T</font></b>iming <b><font color="blue">L</font></b>anguage</td>
+</tr>
+</table>
+<table width="100%" class="page_border">
+	<tr>
+		<td valign="top">
+			<table width="200" class="menu_border">
+				<tr>
+					<td width="200"><a href="./index.html" class="menu_item_div"><div class="menu_item">Home</div></td>
+				</tr>
+				<tr>
+					<td width="200"><div class="inactive_menu_item">HTL Compiler</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./emachine.html" class="menu_item_div"><div class="menu_item">E Machine</div></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./exotask-htl/index.html" class="menu_item_div"><div class="menu_item"> HTL Exotask</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./reliability.html" class="menu_item_div"><div class="menu_item"> HTL and Reliability</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./examples.html" class="menu_item_div"><div class="menu_item"> Examples</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./publications.html" class="menu_item_div"><div class="menu_item"> Publications</div></a></td>
+				</tr>
+				<tr>
+					<td width="200"><a href="./team.html" class="menu_item_div"><div class="menu_item"> Team</div></a></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<br>
+			<br>
+			<h3>Abstract</h3>
+			<p class="abstract">
+				The HTL compiler first checks the well-formedness and the 
+				well-timedness of an HTL program, and in the end it generates 
+				the so-called E code (which is virtual machine code) 
+				interpreted by the <a href="./emachine.html">E machine</a>.
+				When compiling an HTL program there are two different possibilities:
+				(1) first flatten the HTL program and then compile the resulted flat
+				program, and (2) directly compile the hierarchical program. First 
+				compilation method is useful when compiling HTL programs that
+				do not have a high degree of parallelism, but if the degree of parallelism
+				increases then the size of the generated code increases exponentially.
+				The second method assumes more runtime support but the size of the
+				generated code increases linearly when the degree of parallelism 
+				increases.				
+				<br>
+				<table width="100%">
+					<tr>
+						<td align="center">
+							<img src="./files/FE.png"/>
+						</td>
+						<td align="center">
+							<img src="./files/HE.png"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							Flat vs. Hierarchical HTL Compiler
+						</td>
+					</tr>
+				</table>
+				<br>
+			</p>
+			<hr>
+			<h3>Downloads</h3>
+				<br>
+				<center>
+				<table border="1">
+					<tr>
+						<td></td>
+						<td align="center">Binary Distribution</td>
+						<td align="center">Sources</td>
+					</tr>
+					<tr>
+						<td> Flat HTL Compiler </td>
+						<td> <a href="./files/flat-htlc.jar">flat-htlc.jar</a> </td>
+						<td> <a href="./files/Flat_HTLCompiler.tar.gz">Flat_HTLCompiler.tar.gz</a> </td>
+					</tr>
+					<tr>
+						<td> Hoerarchical HTL Compiler </td>
+						<td> <a href="./files/hierarchical-htlc.jar">hierarchical-htlc.jar</a> </td>
+						<td> <a href="./files/Hierarchical_HTLCompiler.tar.gz">Hierarchical_HTLCompiler.tar.gz</a> </td>
+					</tr>
+				</table>
+				</center>
+				<br>
+			<hr>
+			<h3>How To Run The Compiler?</h3>
+				Before you run the compiler you have to make sure that you have 
+				installed on your computer J2SE Runtime Environment 5.0 (JRE 
+				5.0, you can find it 
+				<a href="http://java.sun.com/j2se/1.5.0/download.jsp">here</a>).
+				<br>
+				<br>
+				To compile a HTL program you have to open a terminal and type:
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>java -jar [htlc] [file_name]</b>
+				<br>
+				where <i>htlc</i> is either <i>flat-htlc.jar</i> or <i>hierarchical-htlc.jar</i>; 
+				<i>file_name</i>, is the name of  the file containing HTL program, 
+				e.g., java -jar hierarchical-htlc.jar myProgram.htl. If the compilation was successful, 
+				you will see a message: “Complete.”, also in the directory where is the 
+				HTL program, there will be created some directories, all of this 
+				directories, except “Flattening”, contains C code that has to be compiled 
+				into the E Machine. The “Flattening” directory, contains the flatten HTL 
+				program, will the “ecode” directory contains the generated E code.
+				<br>
+				<br>
+				The above instructions are for the case when the HTL program is not 
+				to be run on a distributed platform. If the program will be run on a 
+				distributed platform then you have to use the following command:
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>java -jar [htlc] [file_name] -host [host_name] -annotated</b>
+				<br>
+				where <i>htlc</i> is either <i>flat-htlc.jar</i> or <i>hierarchical-htlc.jar</i>; 
+				<i>file_name</i>, is the name of the file containing HTL program, 
+				and <i>host_name</i>, is the name of the host for which the HTL program 
+				will be compiled, for each host specified in the HTL program, has to 
+				be done a separate compilation. The generated directories are the 
+				same as for single host compilation.
+			<hr>
+			<h3>How To Compile the HTL Compiler?</h3>
+				Before you compile the HTL Compiler you have to make sure that, you 
+				have installed <a href="http://ant.apache.org/bindownload.cgi">
+				ant</a> and <a href="http://java.sun.com/j2se/1.5.0/download.jsp">
+				J2SE(TM) Development Kit 5.0.</a>.
+				<br>
+				<br>
+				You also need the flat or hoerarchical HTL Compiler sources</a>.
+				<br>
+				<br>
+				Directory structure is:
+				<ul>
+					<li>“<b>src</b>” subdirectory contains the source files for the 
+					compiler;
+					<li>“<b>classes</b>” subdirectory will contain the compile files;
+					<li>“<b>dist</b>” subdirectory will contain the generated jar file.
+					<li>“<b>lib</b>” subdirectory contains the sablecc jar file.
+				</ul>	
+				To build the project
+				<ul>
+					<li>type “<b>ant build_jar</b>” to generate the grammar, compile 
+					the *.java sources and create the HTL Compiler jar file;
+					<li>type “<b>ant clean</b>” to clean the project.
+				</ul>
+			<br>
+			<br>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
